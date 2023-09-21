@@ -19,6 +19,7 @@ public class Win : GameWindow, IDisposable
 
     Vector2 iResolution;
     float iTime;
+    float iFrame;
 
     public Win(GameWindowSettings gameWindow, NativeWindowSettings nativeWindow)
         : base(gameWindow, nativeWindow)
@@ -48,6 +49,9 @@ public class Win : GameWindow, IDisposable
 
         // any shader instance is adequate because they all have the same vert shader/locations
         VertexData.ViewportChanged(Image.Shader);
+
+        iFrame = 0;
+        Clock.Restart();
     }
 
     protected override void OnRenderFrame(FrameEventArgs args)
@@ -71,6 +75,8 @@ public class Win : GameWindow, IDisposable
 
         SwapBuffers();
         SwapBuffers(BufferA);
+
+        iFrame++;
     }
 
     protected override void OnUpdateFrame(FrameEventArgs args)
@@ -87,6 +93,7 @@ public class Win : GameWindow, IDisposable
     {
         pass.Shader.SetUniform("iResolution", iResolution);
         pass.Shader.SetUniform("iTime", iTime);
+        pass.Shader.SetUniform("iFrame", iFrame);
         pass.Shader.SetTexture("iChannel0", iChannel0.TextureHandle, iChannel0.TextureUnit);
 
         GL.BindFramebuffer(FramebufferTarget.Framebuffer, pass.DrawBuffer.FramebufferHandle);

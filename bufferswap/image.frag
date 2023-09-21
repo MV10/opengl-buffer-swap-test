@@ -1,4 +1,5 @@
 ﻿#version 460
+precision highp float;
 
 in vec2 fragCoord;
 uniform vec2 iResolution;
