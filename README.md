@@ -8,4 +8,5 @@ For testing, this is an implementation of the [HSL Cellular Automata](https://ww
 * `BufferInfo` stores a related set of Framebuffer and Texture handles and a TextureUnit
 * `RenderPass` stores `BufferInfo` objects, the current-frame draw buffer and the last frame's old buffer
 
- 
+ ![Untitled](https://github.com/MV10/opengl-buffer-swap-test/assets/794270/22c6bdf4-0ad1-477d-ba9b-e8a9eed3e9eb)
+
